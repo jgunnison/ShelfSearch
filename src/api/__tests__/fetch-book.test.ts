@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, Mock, vi } from 'vitest';
 import fetchBook from '../fetch-book';
 
 const mockBook = {
@@ -24,7 +24,7 @@ describe('fetchBook', () => {
                 ok: true,
                 json: () => Promise.resolve(mockBook),
             }),
-        ) as unknown as jest.Mock;
+        ) as Mock;
 
         const bookId = '1';
         const result = await fetchBook(bookId);
@@ -40,7 +40,7 @@ describe('fetchBook', () => {
             Promise.resolve({
                 ok: false,
             }),
-        ) as unknown as jest.Mock;
+        ) as Mock;
 
         const bookId = '1';
 

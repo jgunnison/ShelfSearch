@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, Mock, vi } from 'vitest';
 import BookPage from '../book';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
@@ -29,8 +29,8 @@ const mockBook = {
 
 describe('BookPage', () => {
     it('renders loading state initially', () => {
-        (useParams as vi.Mock).mockReturnValue({ bookId: '1' });
-        (useQuery as vi.Mock).mockReturnValue({
+        (useParams as Mock).mockReturnValue({ bookId: '1' });
+        (useQuery as Mock).mockReturnValue({
             data: undefined,
             error: undefined,
             isLoading: true,
@@ -42,8 +42,8 @@ describe('BookPage', () => {
     });
 
     it('renders error state', () => {
-        (useParams as vi.Mock).mockReturnValue({ bookId: '1' });
-        (useQuery as vi.Mock).mockReturnValue({
+        (useParams as Mock).mockReturnValue({ bookId: '1' });
+        (useQuery as Mock).mockReturnValue({
             data: undefined,
             error: new Error('Network response was not ok'),
             isLoading: false,
@@ -57,8 +57,8 @@ describe('BookPage', () => {
     });
 
     it('renders BookDetails and Reviews components after fetching book data', () => {
-        (useParams as vi.Mock).mockReturnValue({ bookId: '1' });
-        (useQuery as vi.Mock).mockReturnValue({
+        (useParams as Mock).mockReturnValue({ bookId: '1' });
+        (useQuery as Mock).mockReturnValue({
             data: mockBook,
             error: undefined,
             isLoading: false,
@@ -76,9 +76,9 @@ describe('BookPage', () => {
 
     it('navigates back when the Back button is clicked', () => {
         const mockNavigate = vi.fn();
-        (useParams as vi.Mock).mockReturnValue({ bookId: '1' });
-        (useNavigate as vi.Mock).mockReturnValue(mockNavigate);
-        (useQuery as vi.Mock).mockReturnValue({
+        (useParams as Mock).mockReturnValue({ bookId: '1' });
+        (useNavigate as Mock).mockReturnValue(mockNavigate);
+        (useQuery as Mock).mockReturnValue({
             data: mockBook,
             error: undefined,
             isLoading: false,

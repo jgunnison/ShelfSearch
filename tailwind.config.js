@@ -4,6 +4,7 @@ export default {
     theme: {
         colors: {
             white: '#ffffff',
+            'body-bg': '#ececec',
             'green-50': '#e0fabf',
             'green-100': '#c3e0a6',
             'green-200': '#adcc93',
@@ -14,6 +15,9 @@ export default {
             'green-700': '#507a44',
             'green-800': '#396631',
             'green-900': '#23521e',
+        },
+        container: {
+            center: true,
         },
         extend: {},
         fontFamily: {

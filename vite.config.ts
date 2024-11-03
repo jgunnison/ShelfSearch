@@ -13,7 +13,7 @@ export default defineConfig({
             analyzerMode: 'static',
             analyzerPort: 3001,
             defaultSizes: 'gzip',
-            openAnalyzer: true,
+            openAnalyzer: false,
         }),
     ],
     server: {

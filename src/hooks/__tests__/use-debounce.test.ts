@@ -1,4 +1,5 @@
-import { renderHook, act } from '@testing-library/react-hooks';
+import { act } from 'react';
+import { renderHook } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import useDebounce from '../use-debounce';
 
@@ -29,10 +30,13 @@ describe('useDebounce', () => {
         const { result, unmount } = renderHook(() =>
             useDebounce('initial', 500),
         );
+
         act(() => {
             vi.advanceTimersByTime(250);
         });
+
         unmount();
+
         expect(result.current).toBe('initial');
     });
 });

@@ -1,3 +1,5 @@
+import stripTags from '../utils/strip-tags';
+
 interface BookDetailsProps {
     title: string;
     authors: string[];
@@ -17,12 +19,12 @@ const BookDetails: React.FC<BookDetailsProps> = ({
                 <img
                     src={thumbnail}
                     alt={title}
-                    className="h-auto w-64 flex-shrink-0 object-cover"
+                    className="h-96 w-64 flex-shrink-0 object-cover"
                 />
                 <div className="flex flex-col justify-center">
                     <h2 className="font-serif text-3xl font-bold">{title}</h2>
                     <p>By: {authors.join(', ')}</p>
-                    <p className="mt-2">{description}</p>
+                    <p className="mt-2">{stripTags(description)}</p>
                 </div>
             </div>
         </>

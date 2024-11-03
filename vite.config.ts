@@ -23,7 +23,7 @@ export default defineConfig({
         globals: true,
         environment: 'jsdom',
         css: true,
-        setupFiles: ['./test.setup.ts'],
+        setupFiles: ['./src/tests/test.setup.ts'],
         coverage: {
             provider: 'istanbul',
             reporter: ['text', 'json', 'html'],

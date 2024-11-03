@@ -24,7 +24,7 @@ describe('fetchBook', () => {
                 ok: true,
                 json: () => Promise.resolve(mockBook),
             }),
-        ) as jest.Mock;
+        ) as unknown as jest.Mock;
 
         const bookId = '1';
         const result = await fetchBook(bookId);

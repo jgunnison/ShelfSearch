@@ -40,7 +40,7 @@ describe('fetchBook', () => {
             Promise.resolve({
                 ok: false,
             }),
-        ) as jest.Mock;
+        ) as unknown as jest.Mock;
 
         const bookId = '1';
 

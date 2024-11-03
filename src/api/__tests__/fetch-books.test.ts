@@ -39,7 +39,7 @@ describe('fetchBooks', () => {
                 ok: true,
                 json: () => Promise.resolve(mockBooks),
             }),
-        ) as jest.Mock;
+        ) as unknown as jest.Mock;
 
         const query = 'test';
         const result = await fetchBooks(query);
@@ -56,7 +56,7 @@ describe('fetchBooks', () => {
                 ok: true,
                 json: () => Promise.resolve({}),
             }),
-        ) as jest.Mock;
+        ) as unknown as jest.Mock;
 
         const query = 'test';
         const result = await fetchBooks(query);

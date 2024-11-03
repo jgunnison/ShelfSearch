@@ -66,4 +66,20 @@ describe('fetchBooks', () => {
             `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${import.meta.env.VITE_GOOGLE_BOOKS_API_KEY}`,
         );
     });
+
+    it('throws an error when the network response is not ok', async () => {
+        global.fetch = vi.fn(() =>
+            Promise.resolve({
+                ok: false,
+            }),
+        ) as unknown as jest.Mock;
+
+        const query = 'test';
+        await expect(fetchBooks(query)).rejects.toThrow(
+            'Network response was not ok',
+        );
+        expect(global.fetch).toHaveBeenCalledWith(
+            `https://www.googleapis.com/books/v1/volumes?q=${query}&key=${import.meta.env.VITE_GOOGLE_BOOKS_API_KEY}`,
+        );
+    });
 });

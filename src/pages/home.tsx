@@ -43,8 +43,32 @@ export default function HomePage() {
         setSearchQuery(query);
     };
 
-    if (isLoading) return <div>Loading...</div>;
-    if (error) return <div>Error loading books</div>;
+    if (isLoading) {
+        return (
+            <>
+                <SearchBar
+                    query={query}
+                    onChange={(e) => handleChange(e)}
+                    onSearch={handleSearch}
+                />
+                <div className="mt-4 text-center text-xl">Loading...</div>
+            </>
+        );
+    }
+    if (error) {
+        return (
+            <>
+                <SearchBar
+                    query={query}
+                    onChange={(e) => handleChange(e)}
+                    onSearch={handleSearch}
+                />
+                <div className="mt-4 text-center text-xl">
+                    Error loading books
+                </div>
+            </>
+        );
+    }
 
     return (
         <>

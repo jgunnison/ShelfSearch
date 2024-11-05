@@ -14,7 +14,7 @@ export default function App() {
                 </header>
                 <main className="m-4 mb-8">
                     <Routes>
-                        <Route path="/" element={<p>Home Page</p>} />
+                        <Route path="/" element={<HomePage />} />
                         <Route path="/book/:bookId" element={<BookPage />} />
                     </Routes>
                 </main>
